@@ -3,6 +3,7 @@ package jaist.ac.jp.XMLParser;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import jaist.ac.jp.XMLParser.obj.DeviceObject;
 import jaist.ac.jp.XMLParser.obj.EOJ;
@@ -14,12 +15,19 @@ import jaist.ac.jp.XMLParser.obj.EPC;
  */
 public class App 
 {
-	public static String filePath = "U:\\\\github\\\\iHouseSim\\\\xml";
-	public static String rootPath = "U:\\\\github\\\\iHouseSim\\\\data";
+	public static String filePath = "/Users/cupv/Documents/iHouseSim/xml";
+	public static String rootPath = "/Users/cupv/Documents/iHouseSim/data";
 	public static String extension = ".*\\.xml";
 	public static String IP;
     public static void main( String[] args )
     {
+    	
+    	Scanner input = new Scanner(System.in);
+    	System.out.println("Enter the absolute path of the folder containing xml files: ");
+    	filePath = input.nextLine();
+    	System.out.println("Enter the absolute path of the folder to store config files: ");
+    	rootPath = input.nextLine()+"/data";
+    	
     	List<DeviceObject> devs = new ArrayList<DeviceObject>();
     	IP = "";
     	List<String> files = Util.loadConfigFile(filePath, extension);
@@ -47,6 +55,9 @@ public class App
 	    		}
 	    	}
 	    }
+    	
+    	System.out.println("Task completed: created config file for " +devs.size() + " ip");
+    	input.close();
     }
     
 }

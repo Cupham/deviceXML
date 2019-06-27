@@ -154,14 +154,14 @@ public class Util {
 		}
         if (isCreated) {
             try {
-				System.out.printf("\n2. Successfully created new file, path:%s",
+				System.out.printf("2. Successfully created new file, path:%s\n",
 				        newFile.getCanonicalPath());
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
         } else { //File may already exist
-            System.out.printf("\n2. Unable to create new file");
+            System.out.println("2. File existed! nothing to do");
         }
         return isCreated;
 	}
@@ -179,6 +179,7 @@ public class Util {
 		if(outputStream!= null) {
 		    try {
 				outputStream.write(value.getBytes());
+				System.out.println("Writing " + value + " to " + fileURL);
 				rs = true;
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -205,7 +206,7 @@ public class Util {
         boolean isCreated = newDirectory.mkdirs();
         if (isCreated) {
             try {
-				System.out.printf("1. Successfully created directories, path:%s",
+				System.out.printf("1. Successfully created directories, path:%s \n",
 				        newDirectory.getCanonicalPath());
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -213,7 +214,7 @@ public class Util {
 			}
         } else if (newDirectory.exists()) {
             try {
-				System.out.printf("1. Directory path already exist, path:%s",
+				System.out.printf("1. Directory path already exist, path:%s \n",
 				        newDirectory.getCanonicalPath());
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
